@@ -44,12 +44,12 @@ public class BookController {
 
     @PutMapping("/{id}")
     public ResponseEntity<BookModel> update(@PathVariable UUID id, @RequestBody @Valid BookDTO data) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(this.service.update(id, data));
+        return ResponseEntity.status(HttpStatus.OK).body(this.service.update(id, data));
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Object> delete(@PathVariable UUID id) {
         this.service.delete(id);
-        return ResponseEntity.status(HttpStatus.CREATED).body("Book deleted successfully.");
+        return ResponseEntity.status(HttpStatus.OK).body("Book deleted successfully.");
     }
 }
