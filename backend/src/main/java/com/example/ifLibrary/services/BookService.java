@@ -5,9 +5,10 @@ import com.example.ifLibrary.models.BookModel;
 import com.example.ifLibrary.repositories.BookRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -15,8 +16,8 @@ public class BookService {
     @Autowired
     private BookRepository repository;
 
-    public List<BookModel> getAll() {
-        return this.repository.findAll();
+    public Page<BookModel> getAll(Pageable pageable) {
+        return this.repository.findAll(pageable);
     }
 
     public BookModel getOne(UUID id) {
