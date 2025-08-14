@@ -1,0 +1,21 @@
+footer {
+  padding: 0.5rem 0;
+  width: 100%;
+  text-align: center;
+  border-top: 1px solid oklch(86.9% 0.005 56.366);
+}
+
+footer p {
+  color: oklch(97% 0.001 106.424);
+  font-size: 0.8rem;
+}
+
+footer p a {
+  color: oklch(97% 0.001 106.424);
+  text-decoration: none;
+}
+
+footer p a:hover {
+  text-decoration: underline;
+  color: oklch(62.3% 0.214 259.815);
+}

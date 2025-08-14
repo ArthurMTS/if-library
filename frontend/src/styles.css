@@ -10,4 +10,5 @@
 
 body {
   font-family: 'Roboto', sans-serif;
+  background-color: oklch(14.7% 0.004 49.25);
 }

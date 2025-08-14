@@ -1,0 +1,9 @@
+header {
+  padding: 1rem 2em;
+  border-bottom: 1px solid oklch(86.9% 0.005 56.366);
+}
+
+header #title {
+  color: oklch(97% 0.001 106.424);
+  font-size: 1.3rem;
+}
