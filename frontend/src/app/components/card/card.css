@@ -1,0 +1,64 @@
+.card {
+  background-color: oklch(21% 0.006 285.885);
+  border-radius: 10px;
+  width: 22vw;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.progress {
+  background-color: oklch(64.6% 0.222 41.116);
+  padding: 1px 5px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-top-right-radius: 8px;
+  color: oklch(87.2% 0.01 258.338);
+}
+
+.card .cover {
+  width: 22vw;
+  margin: 20px 0 10px 0;
+}
+
+.card .title {
+  padding-left: .5rem;
+  color: oklch(92.8% 0.006 264.531);
+}
+
+.card .tag-list {
+  margin: 10px 8px;
+  display: flex;
+  gap: 5px;
+  font-size: .8rem;
+  flex-wrap: wrap;
+}
+
+.card .tag {
+  list-style: none;
+  padding: 1px 2px;
+  border-radius: 5px;
+  background-color: oklch(35.9% 0.144 278.697);
+  color: oklch(87.2% 0.01 258.338);
+}
+
+.card .card-footer {
+  margin-bottom: 10px;
+  display: flex;
+  gap: 5px;
+}
+
+.card .link {
+  text-decoration: none;
+  color: #fff;
+  background-color: oklch(35.9% 0.144 278.697);
+  border-radius: 10px;
+  padding: 2px 5px;
+  transition: all .357s;
+}
+
+.card .link:hover {
+  background-color: oklch(54.1% 0.281 293.009);
+}

@@ -2,3 +2,10 @@ main {
   min-height: calc(100vh - 90.75px);
   display: flex;
 }
+
+.book-list {
+  margin: 1.5rem 1rem 1.5rem 0;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
