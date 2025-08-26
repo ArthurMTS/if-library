@@ -16,11 +16,12 @@
   right: 0;
   border-top-right-radius: 8px;
   color: oklch(87.2% 0.01 258.338);
+  font-size: 0.8rem;
 }
 
 .card .cover {
   width: 22vw;
-  margin: 20px 0 10px 0;
+  margin: 16px 0 6px 0;
 }
 
 .card .title {
@@ -29,7 +30,7 @@
 }
 
 .card .tag-list {
-  margin: 10px 8px;
+  margin: 6px 8px;
   display: flex;
   gap: 5px;
   font-size: .8rem;
@@ -45,20 +46,26 @@
 }
 
 .card .card-footer {
-  margin-bottom: 10px;
+  margin-bottom: 6px;
   display: flex;
-  gap: 5px;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 1rem;
 }
 
 .card .link {
   text-decoration: none;
   color: #fff;
   background-color: oklch(35.9% 0.144 278.697);
-  border-radius: 10px;
-  padding: 2px 5px;
+  border-radius: 100%;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
   transition: all .357s;
 }
 
 .card .link:hover {
-  background-color: oklch(54.1% 0.281 293.009);
+  transform: scale(1.1);
 }
