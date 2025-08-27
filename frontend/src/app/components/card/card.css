@@ -37,7 +37,7 @@
   flex-wrap: wrap;
 }
 
-.card .tag {
+.card .tag-list .tag {
   list-style: none;
   padding: 1px 2px;
   border-radius: 5px;

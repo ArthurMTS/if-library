@@ -1,0 +1,32 @@
+<section class="drawer">
+  @if (open) {
+    <form>
+      <button (click)="closeDrawer()" class="close" type="button">X</button>
+      <input type="text" placeholder="Title" name="title" required />
+      <input type="text" placeholder="Cover image link" name="cover-link" />
+      <div class="add-tag">
+        <input
+          type="text"
+          placeholder="Tags (Ex.: Modern Fantasy, Sci-Fi, etc)"
+          name="tags"
+          required
+        />
+        <button type="button">+</button>
+      </div>
+      <ul class="tags">
+        <li>Supernatural</li>
+        <li>Sci-Fi</li>
+        <li>Monsters</li>
+        <li>Cosmic Horror</li>
+      </ul>
+      <input type="text" placeholder="Blog link" name="blog-link" />
+      <input type="text" placeholder="Play link" name="play-link" required />
+      <label for="finished"
+        >Finished: <input type="checkbox" name="finished" id="finished" required
+      /></label>
+      <button type="submit">Add</button>
+    </form>
+    <div (click)="closeDrawer()" class="background"></div>
+  }
+  <button (click)="openDrawer()" class="open-drawer">+</button>
+</section>
