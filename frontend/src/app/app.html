@@ -2,11 +2,19 @@
 <main>
   <app-sidebar />
   <section class="book-list">
-    <app-card />
-    <app-card />
-    <app-card />
-    <app-card />
+    @for (book of books; track book) {
+      <card
+        [id]="book.id"
+        [title]="book.title"
+        [headerImage]="book.headerImage"
+        [blogLink]="book.blogLink"
+        [playLink]="book.playLink"
+        [tags]="book.tags"
+        [finished]="book.finished"
+        (deleteEmmiter)="loadBooks()"
+      />
+    }
   </section>
-  <app-drawer />
+  <app-drawer (addEmmiter)="loadBooks()" />
 </main>
 <app-footer />

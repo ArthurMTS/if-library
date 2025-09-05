@@ -80,6 +80,7 @@
   cursor: pointer;
   transition: all .375s;
   font-size: .8rem;
+  text-transform: capitalize;
 }
 
 .drawer .tags li:hover {
