@@ -74,7 +74,7 @@ export class Drawer {
 
     this.api.create(newBook).subscribe(res => {
       console.log('Item added successfully:', res);
-      this.open = false;
+      this.closeDrawer()
       this.addEmmiter.emit();
     },
     err => {
