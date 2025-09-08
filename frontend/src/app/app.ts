@@ -23,8 +23,8 @@ export class App implements OnInit {
   }
 
   loadBooks() {
-    this.api.getAll().subscribe((res: any) => {
-      this.books = res;
+    this.api.getAll().subscribe((res: Book[]) => {
+      this.books = res.sort((a, b) => a.title < b.title ? 0 : 1);
     });
   }
 }

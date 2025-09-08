@@ -10,7 +10,7 @@ export class Api {
   private http = inject(HttpClient);
 
   getAll() {
-    return this.http.get(environment.apiUrl);
+    return this.http.get<Book[]>(environment.apiUrl);
   }
 
   create(newBook: Book) {
