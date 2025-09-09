@@ -27,4 +27,24 @@ export class App implements OnInit {
       this.books = res.sort((a, b) => a.title < b.title ? 0 : 1);
     });
   }
+
+  loadBooksWithFilter(filter: string) {
+    if (filter === "all") {
+      this.loadBooks();
+      return;
+    }
+
+    this.api.getAll().subscribe((res: Book[]) => {
+      this.books = res
+        .filter(book => {
+          if (book.title.toLowerCase().includes(filter)) {
+            return true;
+          } else if(book.tags.find(tag => tag === filter)) {
+            return true;
+          }
+          return false;
+        })
+        .sort((a, b) => a.title < b.title ? 0 : 1);
+    });
+  }
 }

@@ -1,6 +1,6 @@
 <app-header />
 <main>
-  <app-sidebar />
+  <app-sidebar (filterEmitter)="loadBooksWithFilter($event)" />
   <section class="book-list">
     @for (book of books; track book) {
       <card
