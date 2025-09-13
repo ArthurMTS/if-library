@@ -12,6 +12,24 @@
   padding: 1rem;
 }
 
+@media only screen and (max-width: 800px) {
+  .drawer form {
+    width: 50vw;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .drawer form {
+    width: 70vw;
+  }
+}
+
+@media only screen and (max-width: 300px) {
+  .drawer form {
+    width: 100vw;
+  }
+}
+
 .drawer form input {
   padding: 5px;
 }

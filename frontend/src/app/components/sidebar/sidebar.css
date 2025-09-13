@@ -1,6 +1,21 @@
 aside {
-  width: 28vw;
+  width: 250px;
   padding: 1rem;
+}
+
+@media only screen and (max-width: 460px) {
+  aside {
+    width: 50vw;
+    font-size: 14px;
+  }
+
+  aside form {
+    justify-content: center;
+  }
+
+  aside form input {
+    width: 100%;
+  }
 }
 
 aside h2 {
@@ -11,12 +26,14 @@ aside h2 {
 
 aside form {
   display: flex;
+  flex-wrap: wrap;
   width: 100%;
   gap: 5px;
 }
 
 aside form input {
   padding: 5px;
+  width: 79%;
 }
 
 aside form button {
