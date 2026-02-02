@@ -11,40 +11,36 @@ import { Api } from './services/api';
   selector: 'app-root',
   imports: [Header, Sidebar, Footer, Card, Drawer],
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrl: './app.css',
 })
 export class App implements OnInit {
-  books: Book[] = [];
+  protected books: Book[] = [];
+  private readonly api = inject(Api);
 
-  private api = inject(Api);
-  
   ngOnInit(): void {
     this.loadBooks();
   }
 
   loadBooks() {
     this.api.getAll().subscribe((res: Book[]) => {
-      this.books = res.sort((a, b) => a.title < b.title ? 0 : 1);
+      this.books = res.sort((a, b) => (a.title < b.title ? 0 : 1));
     });
   }
 
   loadBooksWithFilter(filter: string) {
-    if (filter === "all") {
+    if (filter === 'all') {
       this.loadBooks();
       return;
     }
 
     this.api.getAll().subscribe((res: Book[]) => {
       this.books = res
-        .filter(book => {
-          if (book.title.toLowerCase().includes(filter)) {
-            return true;
-          } else if(book.tags.find(tag => tag === filter)) {
-            return true;
-          }
-          return false;
-        })
-        .sort((a, b) => a.title < b.title ? 0 : 1);
+        .filter(
+          (book) =>
+            book.title.toLowerCase().includes(filter) ||
+            book.tags.find((tag) => tag === filter),
+        )
+        .sort((a, b) => (a.title < b.title ? 0 : 1));
     });
   }
 }

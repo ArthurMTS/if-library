@@ -1,4 +1,4 @@
-import { Component, EventEmitter, inject, Output } from '@angular/core';
+import { Component, inject, output, signal } from '@angular/core';
 import { Api } from '../../services/api';
 import { Book } from '../../types/book';
 import { v4 as uuidv4 } from 'uuid';
@@ -7,56 +7,57 @@ import { v4 as uuidv4 } from 'uuid';
   selector: 'app-drawer',
   imports: [],
   templateUrl: './drawer.html',
-  styleUrl: './drawer.css'
+  styleUrl: './drawer.css',
 })
 export class Drawer {
-  private api = inject(Api);
+  protected open = signal(false);
+  protected headerImage = signal('');
+  protected title = signal('');
+  protected blogLink = signal('');
+  protected playLink = signal('');
+  protected tag = signal('');
+  protected tags = signal<string[]>([]);
+  protected finished = signal(false);
 
-  @Output() addEmmiter = new EventEmitter();
-
-  open = false;
-  headerImage: string = "";
-  title: string = "";
-  blogLink: string = "";
-  playLink: string = "";
-  tag: string = "";
-  tags: string[] = [];
-  finished: boolean = false;
+  private readonly api = inject(Api);
+  protected readonly addEmmiter = output();
 
   changeTag(event: any) {
-    this.tag = event.target.value;
+    this.tag.set(event.target.value);
   }
 
   addTagButton() {
-    const exist = this.tags.find(tag => tag === this.tag.toLowerCase());
+    const exist = this.tags().find((tag) => tag === this.tag().toLowerCase());
     if (!exist) {
-      this.tags.push(this.tag.toLowerCase());
-      this.tag = "";
+      const t: string[] = this.tags();
+      t.push(this.tag().toLowerCase());
+      this.tags.set(t);
+      this.tag.set('');
     }
   }
 
   removeTag(tag: string) {
-    this.tags = this.tags.filter(t => t !== tag);
+    this.tags.update((tags) => tags.filter((t) => t !== tag));
   }
 
   changeHeader(event: any) {
-    this.headerImage = event.target.value;
+    this.headerImage.set(event.target.value);
   }
 
   changeTitle(event: any) {
-    this.title = event.target.value;
+    this.title.set(event.target.value);
   }
 
   changeBlog(event: any) {
-    this.blogLink = event.target.value;
+    this.blogLink.set(event.target.value);
   }
 
   changePlay(event: any) {
-    this.playLink = event.target.value;
+    this.playLink.set(event.target.value);
   }
 
   changeFinished() {
-    this.finished = !this.finished;
+    this.finished.update((finished) => !finished);
   }
 
   onSubmit(event: SubmitEvent) {
@@ -64,31 +65,33 @@ export class Drawer {
 
     const newBook: Book = {
       id: uuidv4(),
-      title: this.title,
-      headerImage: this.headerImage,
-      playLink: this.playLink,
-      blogLink: this.blogLink,
-      tags: this.tags,
-      finished: this.finished
+      title: this.title(),
+      headerImage: this.headerImage(),
+      playLink: this.playLink(),
+      blogLink: this.blogLink(),
+      tags: this.tags(),
+      finished: this.finished(),
     };
 
-    this.api.create(newBook).subscribe(res => {
-      console.log('Item added successfully:', res);
-      this.closeDrawer()
-      this.addEmmiter.emit();
-    },
-    err => {
-      console.error('Error adding item:', err);
-    })
+    this.api.create(newBook).subscribe(
+      (res) => {
+        console.log('Item added successfully:', res);
+        this.closeDrawer();
+        this.addEmmiter.emit();
+      },
+      (err) => {
+        console.error('Error adding item:', err);
+      },
+    );
   }
 
   openDrawer() {
-    this.open = true;
-    document.querySelector("body")?.classList.add("no-scroll");
+    this.open.set(true);
+    document.querySelector('body')?.classList.add('no-scroll');
   }
 
   closeDrawer() {
-    this.open = false;
-    document.querySelector("body")?.classList.remove("no-scroll");
+    this.open.set(false);
+    document.querySelector('body')?.classList.remove('no-scroll');
   }
 }

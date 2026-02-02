@@ -1,29 +1,61 @@
 <section class="drawer">
-  @if (open) {
+  @if (open()) {
     <form (submit)="onSubmit($event)">
       <button (click)="closeDrawer()" class="close" type="button">X</button>
-      <input type="text" placeholder="Title" name="title" [value]="title" (change)="changeTitle($event)" required />
-      <input type="text" placeholder="Cover image link" name="cover-link" [value]="headerImage" (change)="changeHeader($event)" />
+      <input
+        type="text"
+        placeholder="Title"
+        name="title"
+        [value]="title()"
+        (change)="changeTitle($event)"
+        required
+      />
+      <input
+        type="text"
+        placeholder="Cover image link"
+        name="cover-link"
+        [value]="headerImage()"
+        (change)="changeHeader($event)"
+      />
       <div class="add-tag">
         <input
           type="text"
           placeholder="Tags (Ex.: Modern Fantasy, Sci-Fi, etc)"
           name="tags"
-          [value]="tag"
+          [value]="tag()"
           (change)="changeTag($event)"
         />
         <button type="button" (click)="addTagButton()">+</button>
       </div>
       <ul class="tags">
-        @for (tag of tags; track tag) {
-          <li (click)="removeTag(tag)">{{tag}}</li>
+        @for (tag of tags(); track tag) {
+          <li (click)="removeTag(tag)">{{ tag }}</li>
         }
       </ul>
-      <input type="text" placeholder="Blog link" name="blog-link" [value]="blogLink" (change)="changeBlog($event)" />
-      <input type="text" placeholder="Play link" name="play-link" [value]="playLink" (change)="changePlay($event)" required />
+      <input
+        type="text"
+        placeholder="Blog link"
+        name="blog-link"
+        [value]="blogLink()"
+        (change)="changeBlog($event)"
+      />
+      <input
+        type="text"
+        placeholder="Play link"
+        name="play-link"
+        [value]="playLink()"
+        (change)="changePlay($event)"
+        required
+      />
       <label for="finished"
-        >Finished: <input type="checkbox" name="finished" id="finished"
-      [value]="finished" (click)="changeFinished()" /></label>
+        >Finished:
+        <input
+          type="checkbox"
+          name="finished"
+          id="finished"
+          [value]="finished()"
+          (click)="changeFinished()"
+      /></label>
       <button type="submit">Add</button>
     </form>
     <div (click)="closeDrawer()" class="background"></div>

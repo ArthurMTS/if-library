@@ -43,7 +43,7 @@ aside form button {
   color: #fff;
   border: none;
   border-radius: 5px;
-  transition: all .375s;
+  transition: all 0.375s;
 }
 
 aside form button:hover {
@@ -65,7 +65,7 @@ aside ul li {
   color: oklch(87.2% 0.01 258.338);
   text-transform: capitalize;
   cursor: pointer;
-  transition: all .375s;
+  transition: all 0.375s;
 }
 
 aside ul li:hover {

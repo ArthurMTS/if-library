@@ -1,24 +1,29 @@
 <div class="card">
-  <img class="config" src="/more-horizontal.svg" alt="more" (click)="delete(id)">
-  @if (!finished) {
+  <img
+    class="config"
+    src="/more-horizontal.svg"
+    alt="more"
+    (click)="delete(id())"
+  />
+  @if (!finished()) {
     <span class="progress">WiP</span>
   }
   <img
     class="cover"
-    [src]="headerImage"
-    [alt]="title"
+    [src]="headerImage()"
+    [alt]="title()"
     rel="noopener noreferrer"
   />
-  <strong class="title">{{title}}</strong>
+  <strong class="title">{{ title() }}</strong>
   <ul class="tag-list">
-    @for (tag of tags; track tag) {
-      <li class="tag">{{tag}}</li>
+    @for (tag of tags(); track tag) {
+      <li class="tag">{{ tag }}</li>
     }
   </ul>
   <div class="card-footer">
     <a
       class="link"
-      [href]="blogLink"
+      [href]="blogLink()"
       target="_blank"
       rel="noopener noreferrer"
       title="Blog"
@@ -27,7 +32,7 @@
     </a>
     <a
       class="link"
-      [href]="playLink"
+      [href]="playLink()"
       target="_blank"
       rel="noopener noreferrer"
       title="Play"

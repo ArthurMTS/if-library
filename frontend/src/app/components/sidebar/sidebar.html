@@ -1,13 +1,18 @@
 <aside>
   <h2>Filters</h2>
   <form (submit)="onSubmit($event)">
-    <input type="text" placeholder="Title..." [value]="title" (change)="onChangeTitleFilter($event)">
+    <input
+      type="text"
+      placeholder="Title..."
+      [value]="title()"
+      (change)="onChangeTitleFilter($event)"
+    />
     <button>Filter</button>
   </form>
   <ul>
     <li class="reset" (click)="onTagClick('all')">All</li>
-    @for(tag of tags; track tag) {
-      <li (click)="onTagClick(tag)">{{tag}}</li>
+    @for (tag of tags(); track tag) {
+      <li (click)="onTagClick(tag)">{{ tag }}</li>
     }
   </ul>
 </aside>

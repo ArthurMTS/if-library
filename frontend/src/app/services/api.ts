@@ -4,10 +4,10 @@ import { environment } from '../../environments/environment.development';
 import { Book } from '../types/book';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class Api {
-  private http = inject(HttpClient);
+  private readonly http = inject(HttpClient);
 
   getAll() {
     return this.http.get<Book[]>(environment.apiUrl);
@@ -18,6 +18,6 @@ export class Api {
   }
 
   delete(id: string) {
-    return this.http.delete<Book>(environment.apiUrl + "\\" + id);
+    return this.http.delete<Book>(environment.apiUrl + '\\' + id);
   }
 }
