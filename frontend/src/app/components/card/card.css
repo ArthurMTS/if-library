@@ -1,12 +1,19 @@
 .card {
-  background-color: oklch(21% 0.006 285.885);
-  border-radius: 10px;
-  width: 22vw;
+  background-color: oklch(14.7% 0.004 49.25);
+  border-radius: 5px;
+  width: 19rem;
   min-width: 175px;
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
+  box-shadow: 5px 5px 10px black;
+  transition: all .375s;
+  cursor: pointer;
+}
+
+.card:hover {
+  scale: 1.05;
 }
 
 .progress {
@@ -15,13 +22,13 @@
   position: absolute;
   top: 0;
   right: 0;
-  border-top-right-radius: 8px;
+  border-top-right-radius: 5px;
   color: oklch(87.2% 0.01 258.338);
   font-size: 0.8rem;
 }
 
 .card .cover {
-  width: 22vw;
+  width: 100%;
   min-width: 175px;
   height: 28vh;
   margin: 16px 0 6px 0;
