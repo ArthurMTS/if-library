@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { Header } from './components/header/header';
-import { Sidebar } from './components/sidebar/sidebar';
+import { Filter } from './components/filter/filter';
 import { Footer } from './components/footer/footer';
 import { Card } from './components/card/card';
 import { Drawer } from './components/drawer/drawer';
@@ -9,7 +9,7 @@ import { Api } from './services/api';
 
 @Component({
   selector: 'app-root',
-  imports: [Header, Sidebar, Footer, Card, Drawer],
+  imports: [Header, Filter, Footer, Card, Drawer],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })

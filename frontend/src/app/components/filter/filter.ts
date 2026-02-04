@@ -1,20 +1,14 @@
-import {
-  Component,
-  inject,
-  OnInit,
-  output,
-  signal,
-} from '@angular/core';
+import { Component, inject, OnInit, output, signal } from '@angular/core';
 import { Api } from '../../services/api';
 import { Book } from '../../types/book';
 
 @Component({
-  selector: 'app-sidebar',
+  selector: 'app-filter',
   imports: [],
-  templateUrl: './sidebar.html',
-  styleUrl: './sidebar.css',
+  templateUrl: './filter.html',
+  styleUrl: './filter.css',
 })
-export class Sidebar implements OnInit {
+export class Filter implements OnInit {
   private readonly api = inject(Api);
   protected tags = signal<string[]>([]);
   protected title = signal('');
@@ -36,10 +30,13 @@ export class Sidebar implements OnInit {
         });
       });
     });
-    this.tags.set(tgs.sort((a, b) => (a < b ? 0 : 1)));
+    console.log(tgs)
+    console.log(tgs.sort((a, b) => (a > b ? 1 : 0)))
+    this.tags.set(tgs.sort((a, b) => (a < b ? 1 : 0)));
   }
 
   onTagClick(tag: string) {
+
     this.filterEmitter.emit(tag.toLowerCase());
   }
 

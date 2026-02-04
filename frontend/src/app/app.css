@@ -1,12 +1,15 @@
 main {
   min-height: calc(100vh - 90.75px);
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .book-list {
-  margin: 1.5rem 0;
+  margin: 2rem 5rem;
   display: flex;
   justify-content: center;
-  gap: 1rem;
+  gap: 2rem;
   flex-wrap: wrap;
 }

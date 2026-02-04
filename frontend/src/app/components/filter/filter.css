@@ -1,42 +1,25 @@
-aside {
-  width: 250px;
+.filter {
+  width: 30rem;
   padding: 1rem;
 }
 
-@media only screen and (max-width: 460px) {
-  aside {
-    width: 50vw;
-    font-size: 14px;
-  }
-
-  aside form {
-    justify-content: center;
-  }
-
-  aside form input {
-    width: 100%;
-  }
-}
-
-aside h2 {
-  color: oklch(97% 0.001 106.424);
-  font-size: 1.1rem;
-  margin-bottom: 10px;
-}
-
-aside form {
+.filter form {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   width: 100%;
   gap: 5px;
 }
 
-aside form input {
+.filter form input {
   padding: 5px;
-  width: 79%;
+  width: 87%;
+  padding: 5px;
+  font-size: 1.2rem;
 }
 
-aside form button {
+.filter form button {
+  font-size: 1.2rem;
   padding: 0 5px;
   cursor: pointer;
   background-color: oklch(49.1% 0.27 292.581);
@@ -46,18 +29,22 @@ aside form button {
   transition: all 0.375s;
 }
 
-aside form button:hover {
+.filter form button:hover {
+  background-color: oklch(43.049% 0.2342 293.36);
+}
+
+.filter form button:hover {
   opacity: 0.9;
 }
 
-aside ul {
+.filter ul {
   margin-top: 20px;
   display: flex;
   flex-wrap: wrap;
   gap: 5px;
 }
 
-aside ul li {
+.filter ul li {
   list-style: none;
   padding: 1px 2px;
   border-radius: 5px;
@@ -68,10 +55,25 @@ aside ul li {
   transition: all 0.375s;
 }
 
-aside ul li:hover {
+.filter ul li:hover {
   transform: scale(1.03);
 }
 
-aside ul li.reset {
+.filter ul li.reset {
   background-color: oklch(62.7% 0.194 149.214);
+}
+
+@media only screen and (max-width: 460px) {
+  .filter {
+    width: 50vw;
+    font-size: 14px;
+  }
+
+  .filter form {
+    justify-content: center;
+  }
+
+  .filter form input {
+    width: 100%;
+  }
 }
