@@ -1,16 +1,18 @@
 import { Component, inject, OnInit, output, signal } from '@angular/core';
 import { Api } from '../../services/api';
 import { Book } from '../../types/book';
+import { FilterTag } from '../filter-tag/filter-tag';
 
 @Component({
   selector: 'app-filter',
-  imports: [],
+  imports: [FilterTag],
   templateUrl: './filter.html',
   styleUrl: './filter.css',
 })
 export class Filter implements OnInit {
   private readonly api = inject(Api);
   protected tags = signal<string[]>([]);
+  protected activeFilter = signal('');
   protected title = signal('');
 
   protected readonly filterEmitter = output<string>();
@@ -30,14 +32,12 @@ export class Filter implements OnInit {
         });
       });
     });
-    console.log(tgs)
-    console.log(tgs.sort((a, b) => (a > b ? 1 : 0)))
     this.tags.set(tgs.sort((a, b) => (a < b ? 1 : 0)));
   }
 
   onTagClick(tag: string) {
-
-    this.filterEmitter.emit(tag.toLowerCase());
+    this.activeFilter.set(tag);
+    this.filterEmitter.emit(tag);
   }
 
   onSubmit(event: SubmitEvent) {

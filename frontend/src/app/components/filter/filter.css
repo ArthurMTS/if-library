@@ -44,23 +44,19 @@
   gap: 5px;
 }
 
-.filter ul li {
-  list-style: none;
-  padding: 1px 2px;
-  border-radius: 5px;
-  background-color: oklch(35.9% 0.144 278.697);
-  color: oklch(87.2% 0.01 258.338);
-  text-transform: capitalize;
+.filter button {
+  padding: 2px 7px;
+  background-color: oklch(63.7% 0.237 25.331);
+  color: #fff;
+  border: none;
+  border-radius: 5rem;
+  font-size: 1rem;
   cursor: pointer;
   transition: all 0.375s;
 }
 
-.filter ul li:hover {
+.filter button:hover {
   transform: scale(1.03);
-}
-
-.filter ul li.reset {
-  background-color: oklch(62.7% 0.194 149.214);
 }
 
 @media only screen and (max-width: 460px) {

@@ -1,0 +1,11 @@
+@if (active()) {
+  <li class="active " (click)="onTagClick(tag())">
+    <input type="radio" [name]="tag()" [id]="tag()" checked>
+    <label [for]="tag()">{{ tag() }}</label>
+  </li>
+} @else {
+  <li (click)="onTagClick(tag())">
+    <input type="radio" [name]="tag()" [id]="tag()">
+    <label [for]="tag()">{{ tag() }}</label>
+  </li>
+}

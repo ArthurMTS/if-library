@@ -9,9 +9,9 @@
     <button>Filter</button>
   </form>
   <ul>
-    <li class="reset" (click)="onTagClick('all')">All</li>
+    <button (click)="onTagClick('')">Reset</button>
     @for (tag of tags(); track tag) {
-      <li (click)="onTagClick(tag)">{{ tag }}</li>
+      <filter-tag [tag]="tag" [active]="tag === activeFilter()" (tagClickEmitter)="onTagClick(tag)" />
     }
   </ul>
 </section>

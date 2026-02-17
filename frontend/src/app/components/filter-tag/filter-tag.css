@@ -1,0 +1,27 @@
+li {
+  list-style: none;
+  padding: 2px 5px;
+  border-radius: 5rem;
+  background-color: oklch(35.9% 0.144 278.697);
+  color: oklch(87.2% 0.01 258.338);
+  text-transform: capitalize;
+  cursor: pointer;
+  transition: all 0.375s;
+}
+
+li.active {
+  background-color: oklch(46.354% 0.26465 265.514);
+}
+
+li input[type=radio] {
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+li label {
+  cursor: pointer;
+}
+
+li:hover {
+  transform: scale(1.03);
+}
