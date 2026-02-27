@@ -14,6 +14,7 @@ export class Filter implements OnInit {
   protected tags = signal<string[]>([]);
   protected activeFilter = signal('');
   protected title = signal('');
+  protected open = signal(false);
 
   protected readonly filterEmitter = output<string>();
 
@@ -38,6 +39,7 @@ export class Filter implements OnInit {
   onTagClick(tag: string) {
     this.activeFilter.set(tag);
     this.filterEmitter.emit(tag);
+    this.open.set(false);
   }
 
   onSubmit(event: SubmitEvent) {
@@ -47,5 +49,9 @@ export class Filter implements OnInit {
 
   onChangeTitleFilter(event: any) {
     this.title.set(event.target.value);
+  }
+
+  onFilterButtonClick() {
+    this.open.set(true);
   }
 }

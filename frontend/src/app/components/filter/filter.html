@@ -6,12 +6,39 @@
       [value]="title()"
       (change)="onChangeTitleFilter($event)"
     />
-    <button>Filter</button>
+    <button>Search</button>
   </form>
-  <ul>
-    <button (click)="onTagClick('')">Reset</button>
-    @for (tag of tags(); track tag) {
-      <filter-tag [tag]="tag" [active]="tag === activeFilter()" (tagClickEmitter)="onTagClick(tag)" />
-    }
-  </ul>
+  @if (open()) {
+    <ul>
+      <filter-tag
+        tag="All"
+        [active]="activeFilter() === ''"
+        (tagClickEmitter)="onTagClick('')"
+      />
+      @for (tag of tags(); track tag) {
+        <filter-tag
+          [tag]="tag"
+          [active]="tag === activeFilter()"
+          (tagClickEmitter)="onTagClick(tag)"
+        />
+      }
+    </ul>
+  } @else {
+    <ul>
+      @if (activeFilter() !== "") {
+        <button class="filter-button" (click)="onFilterButtonClick()">
+          Filter
+        </button>
+        <filter-tag
+          [tag]="activeFilter()"
+          [active]="true"
+          (tagClickEmitter)="onTagClick(activeFilter())"
+        />
+      } @else {
+        <button (click)="onFilterButtonClick()">
+          Filter
+        </button>
+      }
+    </ul>
+  }
 </section>
